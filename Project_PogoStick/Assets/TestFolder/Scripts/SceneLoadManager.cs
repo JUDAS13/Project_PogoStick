@@ -5,9 +5,31 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 /// <summary>
-/// フェード管理クラス
+/// シーン読み込み管理クラス
 /// </summary>
-public class FadeManager : SingletonMonoBehaviour<FadeManager> {
+public class SceneLoadManager : SingletonMonoBehaviour<SceneLoadManager> {
+
+	/// <summary>
+	/// シーン定義
+	/// </summary>
+	public enum SceneType{
+		Title,
+		Gacha,
+		CharactorEdit,
+		StageSelect,
+		Main
+	}
+
+	/// <summary>
+	/// シーン名前リスト
+	/// </summary>
+	private string[] sceneNamesList = {
+		"Scene_Title",
+		"Scene_Gacha",
+		"Scene_CharactorEdit",
+		"Scene_StageSelect",
+		"Scene_Main"
+	};
 
 	/// <summary>
 	/// フェード用メッシュレンダラー
@@ -45,25 +67,25 @@ public class FadeManager : SingletonMonoBehaviour<FadeManager> {
 	/// <summary>
 	/// シーン遷移を実行する。
 	/// </summary>
-	/// <param name="_sceneName"></param>
+	/// <param name="_sceneType"></param>
 	/// <param name="_interval"></param>
-	public void MoveScene(string _sceneName, float _interval = 2f) {
+	public void MoveScene(SceneType _sceneType, float _interval = 2f) {
 
 		//シーン遷移中は遷移させない。
 		if (isMovingScene)
 			return;
 
 		//シーン遷移コルーチンの再生。
-		StartCoroutine(_MoveScene(_sceneName, _interval));
+		StartCoroutine(_MoveScene(_sceneType, _interval));
 	}
 
 	/// <summary>
 	/// シーン遷移コルーチン
 	/// </summary>
-	/// <param name="_sceneName"></param>
+	/// <param name="_sceneType"></param>
 	/// <param name="_interval"></param>
 	/// <returns></returns>
-	private IEnumerator _MoveScene(string _sceneName, float _interval) {
+	private IEnumerator _MoveScene(SceneType _sceneType, float _interval) {
 
 		//初期化----------------------------------------------------------------------------------------------------------------------------
 		#region //初期化----------------------------------------------------------------------------------------------------------------------------
@@ -97,8 +119,8 @@ public class FadeManager : SingletonMonoBehaviour<FadeManager> {
 		}
 
 		//シーン切り替え。
-		SceneManager.LoadScene(_sceneName);
-		
+		SceneManager.LoadScene(sceneNamesList[(int)_sceneType]);
+
 		//タイマー初期化。
 		timer = 0.0f;
 
