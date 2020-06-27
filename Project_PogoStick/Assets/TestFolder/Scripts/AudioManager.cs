@@ -35,18 +35,18 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager> {
 	/// 再生BGMファイル
 	/// </summary>
 	[SerializeField, Header("再生BGMファイル")]
-	private AudioClip[] bgmClip;
+	private AudioClip[] bgmClips = null;
 
 	/// <summary>
 	/// 再生SEファイル
 	/// </summary>
 	[SerializeField, Header("再生SEファイル")]
-	private AudioClip[] seClip;
+	private AudioClip[] seClips = null;
 
 	/// <summary>
 	/// 初期化
 	/// </summary>
-	private void Awake() {
+	private new void Awake() {
 
 		base.Awake();
 
@@ -94,7 +94,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager> {
 		yield return new WaitForSeconds(_delay);
 
 		//BGMの設定。
-		bgmSource.clip = bgmClip[(int)_bgmType];
+		bgmSource.clip = bgmClips[(int)_bgmType];
 
 		//ボリュームの設定。
 		bgmSource.volume = _vol;
@@ -152,7 +152,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager> {
 		{
 
 			//SEの設定。
-			seSource.clip = seClip[(int)_seType];
+			seSource.clip = seClips[(int)_seType];
 
 			//ボリュームの設定。
 			seSource.volume = _vol;
@@ -169,7 +169,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager> {
 		}
 		else //単発再生の場合 
 		{
-			seSource.PlayOneShot(seClip[(int)_seType], _vol);
+			seSource.PlayOneShot(seClips[(int)_seType], _vol);
 
 			//コルーチンの終了。
 			yield break;
