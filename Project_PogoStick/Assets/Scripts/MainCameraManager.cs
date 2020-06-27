@@ -15,37 +15,36 @@ public class MainCameraManager : MonoBehaviour
 	/// カメラ本体
 	/// </summary>
 	[SerializeField, Header("カメラ本体")]
-	private Camera camera3D;
+	private Camera camera3D = null;
 
 	/// <summary>
 	/// 最初のカメラの揺れの速さ
 	/// </summary>
 	[SerializeField, Header("最初のカメラの揺れの速さ")]
-	private Vector3 shakeFrequency;
+	private Vector3 shakeFrequency = Vector3.zero;
 
 	/// <summary>
 	/// 最初のカメラの揺れの量
 	/// </summary>
 	[SerializeField, Header("最初のカメラの揺れの量")]
-	private Vector3 shakeValue;
+	private Vector3 shakeValue = Vector3.zero;
 
 	/// <summary>
 	/// カメラの目標
 	/// </summary>
 	[SerializeField, Header("カメラの目標を設定")]
-	private CameraTarget[] cameraTarget;
+	private CameraTarget[] cameraTarget = null;
 	[System.Serializable]
-	private struct CameraTarget
-	{
+	private class CameraTarget {
 
 		[SerializeField, Header("目標のオブジェクトを登録するか、カメラの最終目標を登録する")]
-		public GameObject target;
+		public GameObject target = null;
 
 		[SerializeField, Range(0, 10), Header("目標までのカメラのスピード")]
-		public float toTargetTransformSpeed;
+		public float toTargetTransformSpeed = 0.0f;
 
 		[SerializeField, Header("目標調整オフセット")]
-		public Vector3 offset;
+		public Vector3 offset = Vector3.zero;
 	}
 
 	/// <summary>
@@ -64,7 +63,7 @@ public class MainCameraManager : MonoBehaviour
 	/// カメラが目標をキープし続けるスピード
 	/// </summary>
 	[SerializeField, Header("カメラが目標をキープし続けるスピード")]
-	private float keepSpeed;
+	private float keepSpeed = 0;
 
 	/// <summary>
 	/// 目標までのレート
@@ -84,7 +83,7 @@ public class MainCameraManager : MonoBehaviour
 	/// <summary>
 	/// 初期角度保存用
 	/// </summary>
-	new Vector3 tempEuler;
+	private Vector3 tempEuler;
 
 	/// <summary>
 	/// 時間設定用

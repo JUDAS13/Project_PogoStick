@@ -11,13 +11,13 @@ public class MainGameManager : StateBaseClass {
 	/// メインカメラマネージャー
 	/// </summary>
 	[SerializeField, Header("メインカメラマネージャー")]
-	private MainCameraManager mainCameraManager;
+	private MainCameraManager mainCameraManager = null;
 
 	/// <summary>
 	/// メインゲームHUD
 	/// </summary>
 	[SerializeField, Header("メインゲームHUD")]
-	private MainGaneHUD mainGameHud;
+	private MainGaneHUD mainGameHud = null;
 
 	/// <summary>
 	/// 初期化

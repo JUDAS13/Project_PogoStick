@@ -13,7 +13,7 @@ public class Scene_MainGame : StateBaseClass {
     /// MainGameManager
     /// </summary>
     [SerializeField, Header("MainGameManager")]
-    private MainGameManager mainGameManager;
+    private MainGameManager mainGameManager = null;
 
     /// <summary>
     /// 初期化

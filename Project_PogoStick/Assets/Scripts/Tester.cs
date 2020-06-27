@@ -16,8 +16,7 @@ public class Tester : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
 
         if (AudioManager.Instance == null)
             return;
