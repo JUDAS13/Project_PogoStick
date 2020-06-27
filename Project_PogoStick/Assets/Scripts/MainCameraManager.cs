@@ -2,15 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainCamera : MonoBehaviour
+public class MainCameraManager : MonoBehaviour
 {
 	/// <summary>
 	/// カメラの状態、またはターゲット
 	/// </summary>
-	public enum CAMERA_STATE
-	{
-		FIRST,
-		FOLLOW_CHARA,
+	public enum CAMERA_STATE {
 		MAX,
 	}
 

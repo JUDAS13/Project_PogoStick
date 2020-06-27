@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainHUD : MonoBehaviour {
+public class MainGaneHUD : MonoBehaviour {
 
+	public void Init(){
+
+	}
 }

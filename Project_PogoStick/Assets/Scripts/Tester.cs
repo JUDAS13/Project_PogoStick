@@ -5,6 +5,12 @@ using UnityEngine;
 public class Tester : MonoBehaviour {
 
     void Start() {
+
+        if (AudioManager.Instance == null)
+            return;
+
+        DontDestroyOnLoad(this);
+
         AudioManager.Instance.StopBGM();
         AudioManager.Instance.PlayBGM(AudioManager.BGM_TYPE.FIRST);
     }
@@ -12,6 +18,11 @@ public class Tester : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+
+        if (AudioManager.Instance == null)
+            return;
+
+
         if (Input.GetMouseButtonDown(0))
             AudioManager.Instance.PlaySE(AudioManager.SE_TYPE.FIRST);
 
@@ -28,7 +39,7 @@ public class Tester : MonoBehaviour {
             SceneLoadManager.Instance.MoveScene(SceneLoadManager.SceneType.StageSelect);
 
         if (Input.GetKeyDown(KeyCode.Alpha4))
-            SceneLoadManager.Instance.MoveScene(SceneLoadManager.SceneType.Main);
+            SceneLoadManager.Instance.MoveScene(SceneLoadManager.SceneType.MainGame);
 
     }
 }

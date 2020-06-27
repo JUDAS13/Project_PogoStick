@@ -17,7 +17,7 @@ public class SceneLoadManager : SingletonMonoBehaviour<SceneLoadManager> {
 		Gacha,
 		CharactorEdit,
 		StageSelect,
-		Main
+		MainGame
 	}
 
 	/// <summary>
@@ -28,7 +28,7 @@ public class SceneLoadManager : SingletonMonoBehaviour<SceneLoadManager> {
 		"Scene_Gacha",
 		"Scene_CharactorEdit",
 		"Scene_StageSelect",
-		"Scene_Main"
+		"Scene_MainGame"
 	};
 
 	/// <summary>
