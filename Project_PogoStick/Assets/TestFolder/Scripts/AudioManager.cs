@@ -112,7 +112,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager> {
 	/// <summary>
 	/// BGMの停止
 	/// </summary>
-	public void Stop_BGM() {
+	public void StopBGM() {
 		bgmSource.Stop();
 	}
 
@@ -129,7 +129,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager> {
 	/// <param name="_vol"></param>
 	/// <param name="_delay"></param>
 	/// <param name="_loop"></param>
-	public void Play_SE(SE_TYPE _seType, float _vol = 1, float _delay = 0, bool _loop = false) {
+	public void PlaySE(SE_TYPE _seType, float _vol = 1, float _delay = 0, bool _loop = false) {
 		//SE再生コルーチンの再生。
 		StartCoroutine(_PlaySE(_seType, _vol, _delay, _loop));
 	}
@@ -179,7 +179,7 @@ public class AudioManager : SingletonMonoBehaviour<AudioManager> {
 	/// <summary>
 	/// SEの停止。
 	/// </summary>
-	public void Stop_SE() {
+	public void StopSE() {
 		seSource.Stop();
 	}
 
