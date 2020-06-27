@@ -69,7 +69,7 @@ public class SceneLoadManager : SingletonMonoBehaviour<SceneLoadManager> {
 	/// </summary>
 	/// <param name="_sceneType"></param>
 	/// <param name="_interval"></param>
-	public void MoveScene(SceneType _sceneType, float _interval = 2f) {
+	public void MoveScene(SceneType _sceneType, float _interval = 1f) {
 
 		//シーン遷移中は遷移させない。
 		if (isMovingScene)
