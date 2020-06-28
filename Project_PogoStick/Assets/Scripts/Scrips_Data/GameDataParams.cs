@@ -33,4 +33,15 @@ public class GameDataParams : MonoBehaviour {
 	public class MoneyParam {
 		public int DEFAULT_MONEY = 4000;
 	}
+
+
+	public static StageParam stage;
+	public class StageParam {
+		
+		public enum StageType{
+			Stage_0,
+			Stage_1,
+			Max,
+		}
+	}
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainCameraManager : MonoBehaviour
+public class MainCameraController : MonoBehaviour
 {
 	/// <summary>
 	/// カメラの状態、またはターゲット

@@ -30,21 +30,21 @@ public abstract class StateBaseClass : MonoBehaviour {
 	/// <summary>
 	/// 初期化
 	/// </summary>
-	protected void Awake() {
+	private void Awake() {
 		Init();
 	}
 
 	/// <summary>
 	/// 初期化（動作有効時）
 	/// </summary>
-	public void OnEnable() {
+	private void OnEnable() {
 		Resume();
 	}
 
 	/// <summary>
 	/// アップデート
 	/// </summary>
-	protected void Update () {
+	private void Update () {
 		if (!playInit) {
 			
 			if (initMethod != null) {
@@ -64,7 +64,7 @@ public abstract class StateBaseClass : MonoBehaviour {
 	/// <summary>
 	/// カメラワーク用アップデート
 	/// </summary>
-	protected void LateUpdate () {
+	private void LateUpdate () {
 		LateUpdateMethod();
 	}
 
@@ -119,21 +119,21 @@ public abstract class StateBaseClass : MonoBehaviour {
 	/// <summary>
 	/// Awakeのオーバーライド用メソッド
 	/// </summary>
-	public virtual void Init() { }
+	protected virtual void Init() { }
 
 	/// <summary>
 	/// OnEnableのオーバーライド用メソッド
 	/// </summary>
-	public virtual void Resume() { }
+	protected virtual void Resume() { }
 
 	/// <summary>
 	/// アップデートのオーバーライド用メソッド
 	/// </summary>
-	public virtual void UpdateMethod() { }
+	protected virtual void UpdateMethod() { }
 
 	/// <summary>
 	/// カメラワークのオーバーライド用メソッド
 	/// </summary>
-	public virtual void LateUpdateMethod() { }
+	protected virtual void LateUpdateMethod() { }
 
 }

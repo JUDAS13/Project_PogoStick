@@ -2,21 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tester : MonoBehaviour {
+/// <summary>
+/// テスト用マネージャークラス
+/// </summary>
+public class TestManager : SingletonMonoBehaviour<TestManager> {
 
-    void Start() {
+    /// <summary>
+    /// 初期化
+    /// </summary>
+    private void Start() {
 
         if (AudioManager.Instance == null)
             return;
 
         DontDestroyOnLoad(this);
-
         AudioManager.Instance.StopBGM();
         AudioManager.Instance.PlayBGM(AudioManager.BGM_TYPE.FIRST);
     }
 
-    // Update is called once per frame
-    void Update() {
+    /// <summary>
+    /// アップデート
+    /// </summary>
+    private void Update() {
 
         if (AudioManager.Instance == null)
             return;

@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// メインゲームの管理クラス
+/// メインゲームの進行役クラス
 /// </summary>
-public class MainGameManager : StateBaseClass {
+public class MainGameModerator : StateBaseClass {
 
 	/// <summary>
 	/// メインカメラマネージャー
 	/// </summary>
 	[SerializeField, Header("メインカメラマネージャー")]
-	private MainCameraManager mainCameraManager = null;
+	public MainCameraController mainCameraController = null;
 
 	/// <summary>
 	/// メインゲームHUD
@@ -22,10 +22,10 @@ public class MainGameManager : StateBaseClass {
 	/// <summary>
 	/// 初期化
 	/// </summary>
-	public override void Resume() {
+	protected override void Resume() {
 
 		//カメラ初期化
-		mainCameraManager.Init();
+		mainCameraController.Init();
 
 		//HUD初期化
 		mainGameHud.Init();
@@ -37,7 +37,7 @@ public class MainGameManager : StateBaseClass {
 	/// <summary>
 	/// コントローラー用アップデート
 	/// </summary>
-	public override void UpdateMethod() {
+	protected override void UpdateMethod() {
 
 		base.UpdateMethod();
 
@@ -48,7 +48,7 @@ public class MainGameManager : StateBaseClass {
 	/// <summary>
 	/// カメラワーク用のレイトアップデート
 	/// </summary>
-	public override void LateUpdateMethod() {
+	protected override void LateUpdateMethod() {
 
 		base.LateUpdateMethod();
 
@@ -67,7 +67,7 @@ public class MainGameManager : StateBaseClass {
     /// </summary>
     private void StateShowHudInit() {
 		//カメラ初期化
-		mainCameraManager.Reset();
+		mainCameraController.Reset();
 
 		Debug.Log("StateShowHudInit");
 	}
@@ -76,6 +76,7 @@ public class MainGameManager : StateBaseClass {
     /// HUD表示ステート
     /// </summary>
     private void StateShowHud() {
+
 
 		////スタート演出の表示完了したら、レース開始。
 		//if (miniGameHud.IsDone()) {

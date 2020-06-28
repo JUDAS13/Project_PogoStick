@@ -56,6 +56,7 @@ GameObject:
   - component: {fileID: 1987360203005015580}
   - component: {fileID: 986904408484564346}
   - component: {fileID: 1872085859966109022}
+  - component: {fileID: 375102659095389388}
   m_Layer: 0
   m_Name: Fader
   m_TagString: Untagged
@@ -124,3 +125,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &375102659095389388
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5543849835668740096}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2000, y: 2000, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
