@@ -54,6 +54,10 @@ public class StageListManager : SingletonMonoBehaviour<StageListManager> {
 		}
 	}
 
+	/// <summary>
+	/// MainStageスクリプト取得
+	/// </summary>
+	/// <returns></returns>
 	public MainStage GetMainStage(){
 		return generateStage.GetComponent<MainStage>();
 	}

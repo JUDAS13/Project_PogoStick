@@ -15,6 +15,9 @@ public class Scene_MainGame : StateBaseClass {
     [SerializeField, Header("MainGameManager")]
     private MainGameModerator mainGameModerator = null;
 
+    /// <summary>
+    /// ステージ生成アンカー
+    /// </summary>
     [SerializeField, Header("ステージ生成アンカー")]
     private Transform stageGenerateAnchor = null;
 
@@ -22,36 +25,34 @@ public class Scene_MainGame : StateBaseClass {
     /// 初期化
     /// </summary>
     protected override void Resume() {
+
+        //ステージ生成アンカーにステージを生成。
+        StageListManager.Instance.GenerateStagePrefab(GameDataParams.StageParam.StageType.Stage_0, stageGenerateAnchor.position, Quaternion.identity, stageGenerateAnchor);
+
+        //ステージ情報に合わせてプレイヤー位置を設定。
+        mainGameModerator.player.transform.position = StageListManager.Instance.GetMainStage().playerFirstAnchor.position;
+        mainGameModerator.player.transform.rotation = StageListManager.Instance.GetMainStage().playerFirstAnchor.rotation;
+
+        //ステージ情報に合わせてカメラ位置を設定。
+        mainGameModerator.mainCameraController.GetCamera().transform.position = StageListManager.Instance.GetMainStage().cameraFirstAnchor.position;
+        mainGameModerator.mainCameraController.GetCamera().transform.rotation = StageListManager.Instance.GetMainStage().cameraFirstAnchor.rotation;
+
         //ステートを初期化へ移行。
         SetState(StateResetMainGameInit, StateResetMainGame);
+
     }
 
-    protected override void UpdateMethod()
-	{
-		base.UpdateMethod();
-
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            StageListManager.Instance.GenerateStagePrefab(GameDataParams.StageParam.StageType.Stage_0, stageGenerateAnchor.position, Quaternion.identity, stageGenerateAnchor);
-            mainGameModerator.mainCameraController.GetCamera().transform.position = StageListManager.Instance.GetMainStage().cameraFirstAnchor.position;
-            mainGameModerator.mainCameraController.GetCamera().transform.rotation = StageListManager.Instance.GetMainStage().cameraFirstAnchor.rotation;
-        }
-
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            StageListManager.Instance.GenerateStagePrefab(GameDataParams.StageParam.StageType.Stage_1, stageGenerateAnchor.position, Quaternion.identity, stageGenerateAnchor);
-            mainGameModerator.mainCameraController.GetCamera().transform.position = StageListManager.Instance.GetMainStage().cameraFirstAnchor.position;
-            mainGameModerator.mainCameraController.GetCamera().transform.rotation = StageListManager.Instance.GetMainStage().cameraFirstAnchor.rotation;
-        }
-    }
-
+    /// <summary>
+    /// 初期ステート初期化
+    /// </summary>
 	private void StateResetMainGameInit(){
-        Debug.Log("StateResetMainGameInit");
+
     }
 
+    /// <summary>
+    /// 初期ステート
+    /// </summary>
     private void StateResetMainGame(){
-        Debug.Log("StateResetMainGame");
-
         ResetState();
         mainGameModerator.StartPerformance();
     }
